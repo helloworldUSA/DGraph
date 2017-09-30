@@ -210,7 +210,7 @@ Figure: The architecture of DGraph
 
 
 
-The architecture of DGraph is depicted in Figure. It includes three modules. Upon hardware, there is a basic module, i.e., graph data module (GDM). It supplies efficient data access for out-of-core computing. Based on GDM, there are build module (BM) and calc module (CM). BM preprocesses the original graph dataset and generates compressed sequential storage structure. CM provides calc APIs for programmer to execute graph algorithm and automatically executes the graph algorithms in a parallel way. Programmer can implement different graph algorithm by invoking calc APIs.
+The architecture of DGraph is depicted in the above Figure. It includes three modules. Upon hardware, there is a basic module, i.e., graph data module (GDM). It supplies efficient data access for out-of-core computing. Based on GDM, there are build module (BM) and calc module (CM). BM preprocesses the original graph dataset and generates compressed sequential storage structure. CM provides calc APIs for programmer to execute graph algorithm and automatically executes the graph algorithms in a parallel way. Programmer can implement different graph algorithm by invoking calc APIs.
 
 #### 2. Optimization for Out-of-core Computing
 The graph may be much larger than the memory size of a machine. In order to satisfy this requirement, DGraph is designed as an out-of-core computing system. It means that hard disk is leveraged to expand the size of memory. However, during the graph processing, data is frequently swapped between memory and hard disk and may induce low computing efficiency. 
@@ -223,7 +223,7 @@ Figure: Sequential Storage Structure
 
 
 
-**Sequential Storage Structure.** In order to exploit the high sequential bandwidth, graph data is often expected to be accessed in a sequential way. Consequently, we design a sequential storage structure for DGraph as described in Figure. As the above discussed, the level is processed sequentially. Therefore, we can use level ID to locate the sequence of SCCs in this level. After that, we can locate the sequence of vertices of a SCC and locate the edge data of a vertex. In this way, all data can be sequentially stored
+**Sequential Storage Structure.** In order to exploit the high sequential bandwidth, graph data is often expected to be accessed in a sequential way. Consequently, we design a sequential storage structure for DGraph as described in the above Figure. As the above discussed, the level is processed sequentially. Therefore, we can use level ID to locate the sequence of SCCs in this level. After that, we can locate the sequence of vertices of a SCC and locate the edge data of a vertex. In this way, all data can be sequentially stored
 and is allow to be sequentially accessed.
 
 **Data Compressing.** To reduce the number of I/O operations, we compress the edge data to reduce the total volume of the graph. Because the edge data are sequentially stored and the data are integers, we use Base 128 Varints algorithm to compress. It is a sequential integer compress algorithm. The length of compress data is related to the digital size of number. The smaller the number be, the shorter the length of compress data is. Thus, we sort the edge ID of each vertex, and only compress the delta-value between an edge ID and next edge ID. Data compress brings some extra overhead. But to big graph, the benefits of reducing swap operation is more than the extra overhead.

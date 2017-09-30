@@ -197,10 +197,10 @@ int main(int argc, char *argv[])
 ### Basic Algorithm: SCC-DAG execution model
 Just waiting for our paper publishment :)
 ### System Implementation
-To support SCC-DAG model, we have implemented a graph processing system, called DGraph1. It supports inmemory computing as well as out-of-core computing. 
+To support SCC-DAG model, we have implemented a graph processing system, called DGraph. It supports in-memory computing as well as out-of-core computing. 
 
 #### 1. System Architecture
-According to our SCC-DAG model, the DGraph has two stages, i.e., the preprocessing stage and the execution stage. In the preprocessing stage, it figures out SCCs, gets topological sorting and constructs sequential storage structure. In the execution stage, it executes different programs which are given by user according to different graph algorithms. The preprocessing stage is done only once to generate graph data files. After that, it is able to directly enter the execution stage to execute different graph algorithm as needed.
+According to our SCC-DAG model, the DGraph has two stages, i.e., the preprocessing stage and the execution stage. In the preprocessing stage, it figures out SCCs, gets topological sorting and constructs sequential storage structure. In the execution stage, it executes different programs which are given by user according to different graph algorithms. The preprocessing stage is done only once for static graph to generate graph data files. After that, it is able to directly enter the execution stage to execute different graph algorithm as needed.
 
 <div align="center">
 <img src="doc/Framework.png" />

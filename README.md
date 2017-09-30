@@ -1,5 +1,5 @@
 # DGraph
-  DGraph is a large-scale graph processing system.
+  DGraph is a graph processing system for directed graph analysis.
   
   * It enables fast convergence speed and low data access cost.
   
